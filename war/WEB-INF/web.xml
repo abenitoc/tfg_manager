@@ -5,22 +5,12 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
-		<servlet-name>Tfg</servlet-name>
-		<servlet-class>es.upm.dit.isst.tfg.TfgServlet</servlet-class>
+	 <servlet-name>ISST_TFG_T4</servlet-name>
+	 <servlet-class>es.upm.dit.isst.tfg.ISST_TFG_T4Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Tfg</servlet-name>
-		<url-pattern>/tfg</url-pattern>
+	 <servlet-name>ISST_TFG_T4</servlet-name>
+	 <url-pattern>/isst_tfg_t4</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
-	<servlet>
-		<servlet-name>Login</servlet-name>
-		<servlet-class>es.upm.dit.isst.tfg.LoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Login</servlet-name>
-		<url-pattern>/login</url-pattern>
-	</servlet-mapping>
+
 </web-app>
