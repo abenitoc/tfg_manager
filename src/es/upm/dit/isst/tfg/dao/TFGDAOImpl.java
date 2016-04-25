@@ -22,18 +22,18 @@ public class TFGDAOImpl implements TFGDAO {
 	}
 	
 	@Override
-	public TFG createTFG(String autor_email, String title) {
+	public TFG createTFG(String autor_email, String title, String resumen, String tutor) {
 		
 		TFG tfg = null;
 		
 		EntityManager em = EMFService.get().createEntityManager();
 		// TODO Auto-generated method stub
 		
-		tfg = new TFG(autor_email, title);
+		tfg = new TFG(autor_email, title, resumen, tutor, "","", 1);
 		em.persist(tfg);
 		em.close();
-
-		return null;
+		
+		return tfg;
 	}
 
 	@Override
