@@ -49,6 +49,16 @@ public class TFGDAOImpl implements TFGDAO {
 		em.close();
 		return res;
 	}
+	
+	public List<TFG> isATeacher(String teacher){
+		
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("select t from TFG t where t.tutor = :teacher");
+		q.setParameter("teacher", teacher);
+		List<TFG> tfgs = q.getResultList();
+		em.close();
+		return tfgs;
+	};
 
 	@Override
 	public TFG updateTFG(TFG tfg) {
