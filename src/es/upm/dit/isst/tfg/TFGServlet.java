@@ -13,10 +13,17 @@ import es.upm.dit.isst.tfg.model.TFG;
 
 public class TFGServlet extends HttpServlet {
 
+	/**
+	 * Método encargado
+	 * */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
 		
 	}
+	
+	/**
+	 * Método encargado de crear la petición en estado 1
+	 * */
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {

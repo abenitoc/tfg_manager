@@ -12,8 +12,8 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class ISST_TFG_T4Servlet extends HttpServlet {
-/**
-	 * 
+	/**
+	 * Método encargado de servir la página principal de gestión
 	 */
 	private static final long serialVersionUID = 1L;
 
