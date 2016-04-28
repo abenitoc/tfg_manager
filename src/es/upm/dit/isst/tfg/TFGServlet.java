@@ -27,7 +27,7 @@ public class TFGServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
-		String autor = req.getParameter("autor_email");
+		String autor = req.getParameter("user");
 		String title = req.getParameter("title");
 		String resumen = req.getParameter("resumen");
 		String tutor = req.getParameter("tutor");
