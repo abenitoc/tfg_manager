@@ -23,11 +23,65 @@ public class TFG implements Serializable {
 			 String fichero, int estado) {
 		 this.autor = autor;
 		 this.titulo = titulo;
-		 this.resumen = resumen;
-		 this.tutor = tutor;
-		 this.secretario = secretario;
-		 this.fichero = fichero;
+		 this.setResumen(resumen);
+		 this.setTutor(tutor);
+		 this.setSecretario(secretario);
+		 this.setFichero(fichero);
 		 this.estado = estado;
-		 this.memoria = null;
+		 this.setMemoria(null);
 		} 
+	
+	public int getEstado(){
+		return estado;
+	}
+	
+	public String getAutor(){
+		return autor;
+	}
+	
+	public String getTitulo(){
+		return titulo;
+	}
+
+	public String getResumen() {
+		return resumen;
+	}
+
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
+	}
+
+	public String getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(String tutor) {
+		this.tutor = tutor;
+	}
+
+	public String getSecretario() {
+		return secretario;
+	}
+
+	public void setSecretario(String secretario) {
+		this.secretario = secretario;
+	}
+
+	public String getFichero() {
+		return fichero;
+	}
+
+	public void setFichero(String fichero) {
+		this.fichero = fichero;
+	}
+
+	public String getMemoria() {
+		return memoria;
+	}
+
+	public void setMemoria(String memoria) {
+		this.memoria = memoria;
+	}
+	
+
 }

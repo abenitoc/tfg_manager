@@ -40,15 +40,21 @@ public void doGet(HttpServletRequest req, HttpServletResponse resp)
 		if (tfgs.size() != 0){
 			req.setAttribute("tfgs", tfgs);
 		}
+		
+		TFG tfg = tfgDao.readTFG(user);
+		if (tfg!=null)	
+			req.setAttribute("tfg", tfg);
+		
 	}
 	
-	
+
 	
 	req.getSession().setAttribute("user", user);
 	req.getSession().setAttribute("url", url);
 	req.getSession().setAttribute("urlLinktext", urlLinktext);
 	
-	resp.sendRedirect("/MostrarTFGView.jsp");
+	RequestDispatcher rd = req.getRequestDispatcher("MostrarTFGView.jsp");
+	rd.forward(req,resp);
 
 	}
 }

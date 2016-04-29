@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>TFG MANAGER</title>
 </head>
 <body>
 <p>Sistema de gestión de TFGs</p>
@@ -20,6 +20,7 @@
 	<c:if test="${not empty user and empty tfg and empty tfgs}">
 	Alumno: esta es una solicitud de TFG
 	<form action="/solicitud" method="post" acceptcharset="utf-8">
+			<input type="hidden" name="autor" id="autor" value="${user}"/>
 			<input type="text" name="titulo" id="titulo" maxLength="255"
 				size="20" required placeholder="Titulo" />
 			<input type="text"
@@ -35,7 +36,7 @@
 	<c:if test="${not empty user and not empty tfg}">
 		<p>Estado del TFG:</p>
 		
-		<c:if test="${tfg.id == 1}">
+		<c:if test="${ tfg.estado == 1}">
 			<p>Sin memoria.</p>
 		</c:if>
 	</c:if>
@@ -56,7 +57,7 @@
 		<td><c:out value= "${tfgi.resumen}" /></td>
 		<td><c:out value= "${tfgi.tutor}" /></td>
 	<c:choose>
-		<c:when test= "${tfgi.estado == 3}">
+		<c:when test= "${ tfgi.estado == 3}">
 			<form action= "/aceptarSecretario" method="post” acceptcharset= "utf-8">
 				<input type= "hidden" name="autor" value="${tfgi.autor}" />
 				<td><input type= "text" name="secretario" id="secretario”

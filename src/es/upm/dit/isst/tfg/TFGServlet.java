@@ -27,7 +27,8 @@ public class TFGServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
-		String autor = req.getParameter("user");
+		
+		String autor = req.getRemoteUser();
 		String title = req.getParameter("title");
 		String resumen = req.getParameter("resumen");
 		String tutor = req.getParameter("tutor");
@@ -35,6 +36,7 @@ public class TFGServlet extends HttpServlet {
 		TFGDAO tfgdao = TFGDAOImpl.getInstance();
 		TFG tfg = tfgdao.createTFG(autor, title, resumen, tutor);
 		
+		resp.sendRedirect("/isst_tfg_t4");
 		
 	}
 }
