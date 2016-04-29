@@ -20,6 +20,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	 <servlet-name>TFGServlet</servlet-name>
 	 <url-pattern>/solicitud</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	 <servlet-name>TFGTeacher</servlet-name>
+	 <servlet-class>es.upm.dit.isst.tfg.TeacherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	 <servlet-name>TFGTeacher</servlet-name>
+	 <url-pattern>/aceptarTutor</url-pattern>
+	</servlet-mapping>
 	
 
 </web-app>

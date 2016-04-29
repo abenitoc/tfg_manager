@@ -58,7 +58,7 @@
 		<td><c:out value= "${tfgi.tutor}" /></td>
 	<c:choose>
 		<c:when test= "${ tfgi.estado == 3}">
-			<form action= "/aceptarSecretario" method="post” acceptcharset= "utf-8">
+			<form action="/aceptarSecretario" method="post” acceptcharset= "utf-8">
 				<input type= "hidden" name="autor" value="${tfgi.autor}" />
 				<td><input type= "text" name="secretario" id="secretario”
 				maxLength= "255" required size="20" placeholder="tutor" /></td>

@@ -34,6 +34,9 @@ public class TFG implements Serializable {
 	public int getEstado(){
 		return estado;
 	}
+	public void setEstado(int estado){
+		this.estado = estado;
+	}
 	
 	public String getAutor(){
 		return autor;
