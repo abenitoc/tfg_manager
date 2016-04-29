@@ -36,14 +36,14 @@
 		<p>Estado del TFG:</p>
 		
 		<c:if test="${tfg.id == 1}">
-		
+			<p>Sin memoria.</p>
 		</c:if>
 	</c:if>
 	
 	<!-- Si eres profesor -->
 	
 <c:if test= "${not empty user and (fn:length(tfgs) != 0)}">
-<p>Profesor: hay un total de <c:out value= "${fn:length(tfgs)}" /></p>
+<p>Profesor: hay un total de <c:out value= "${(fn:length(tfgs))}" /></p>
 	<table>
 	<tr>
 	<th>autor</th><th>titulo</th><th>resumen</th><th>tutor</th>
