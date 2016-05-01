@@ -42,7 +42,7 @@
 		<p>Estado del TFG:</p>
 		
 		<c:if test="${ tfg.estado == 1}">
-			<p>Sin memoria.</p>
+			<p>Esperando la validación del tutor.</p>
 		</c:if>
 	<c:if test="${not empty user and not empty tfg and tfg.estado == 2}">
 			Formulario subida de memoria. <c:out value="${tfg.memoria}" />
