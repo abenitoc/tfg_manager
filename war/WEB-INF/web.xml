@@ -28,6 +28,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	 <servlet-name>TFGTeacher</servlet-name>
 	 <url-pattern>/aceptarTutor</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	<servlet-name>Upload</servlet-name>
+	<servlet-class>es.upm.dit.isst.tfg.MemoriaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>Upload</servlet-name>
+	<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
 	
-
+	<servlet>
+	<servlet-name>Secretario</servlet-name>
+	<servlet-class>es.upm.dit.isst.tfg.SecretarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>Secretario</servlet-name>
+	<url-pattern>/aceptarSecretario</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 </web-app>

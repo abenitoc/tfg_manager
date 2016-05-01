@@ -30,7 +30,9 @@ public class TFGDAOImpl implements TFGDAO {
 		// TODO Auto-generated method stub
 		
 		tfg = new TFG(autor, title, resumen, tutor, "","", 1);
+		em.getTransaction().begin();
 		em.persist(tfg);
+		em.getTransaction().commit();
 		em.close();
 		
 		return tfg;
@@ -43,6 +45,7 @@ public class TFGDAOImpl implements TFGDAO {
 		Query q = em.createQuery("select t from TFG t where t.autor = :autor");
 		q.setParameter("autor", autor);
 		TFG res = null;
+		@SuppressWarnings("unchecked")
 		List<TFG> tfgs = q.getResultList();
 		if(tfgs.size() > 0)
 			res = (TFG)(q.getResultList().get(0));
@@ -55,6 +58,7 @@ public class TFGDAOImpl implements TFGDAO {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em.createQuery("select t from TFG t where t.tutor = :teacher");
 		q.setParameter("teacher", teacher);
+		@SuppressWarnings("unchecked")
 		List<TFG> tfgs = q.getResultList();
 		em.close();
 		return tfgs;
@@ -64,7 +68,9 @@ public class TFGDAOImpl implements TFGDAO {
 	public TFG updateTFG(TFG tfg) {
 		// TODO Auto-generated method stub
 		EntityManager em = EMFService.get().createEntityManager();
+		em.getTransaction().begin();
 		TFG res = em.merge(tfg);
+		em.getTransaction().commit();
 		em.close();
 		return res;
 	}
@@ -75,7 +81,9 @@ public class TFGDAOImpl implements TFGDAO {
 		EntityManager em = EMFService.get().createEntityManager();
 		try{
 			TFG tfgtoDel = em.find(TFG.class, autor_email);
+			em.getTransaction().begin();
 			em.remove(tfgtoDel);
+			em.getTransaction().commit();
 		} finally {
 			em.close();
 		}

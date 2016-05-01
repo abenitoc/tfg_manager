@@ -53,7 +53,9 @@
 			<input type="submit" value="Subir memoria" />
 		</form>
 	</c:if>
-	
+		<c:if test="${ tfg.estado == 3}">
+			<p>Gracias se le notificará con la fecha de presentación.</p>
+		</c:if>
 
 	</c:if>
 	
@@ -73,30 +75,33 @@
 		<td><c:out value= "${tfgi.resumen}" /></td>
 		<td><c:out value= "${tfgi.tutor}" /></td>
 	<c:choose>
-		<c:when test= "${ tfgi.estado == 3}">
-			<form action="/aceptarSecretario" method="post” acceptcharset= "utf-8">
+		<c:when test= "${ tfgi.estado == 3 and  tfgi.secretario == null}">
+			<form action="/aceptarSecretario" method="post" acceptcharset= "utf-8">
 				<input type= "hidden" name="autor" value="${tfgi.autor}" />
-				<td><input type= "text" name="secretario" id="secretario”
+				<td><input type= "text" name="secretario" id="secretario"
 				maxLength= "255" required size="20" placeholder="tutor" /></td>
 				<td><input type= "submit" value="Aceptar secretario" /></td>
 			</form>
 		</c:when>
+		<c:when test= "${tfgi.estado == 2}">
+			<td>Esperando memoria</td>
+			<td><c:out value= "${tfgi.estado}" /></td>
+		</c:when>
 		<c:when test= "${tfgi.estado == 1}">
 			<form action= "/aceptarTutor" method="get" acceptcharset="utf-8">
 				<input type= "hidden" name="autor" value="${tfgi.autor}" />
-				<td><c:out value= "${tfgi.secretario}" /></td>
 				<td><input type= "submit" value="Aceptar tutor" /></td>
 				</form>
-				</c:when>
-				<c:otherwise>
+		</c:when>
+	    <c:otherwise>
 				<td><c:out value= "${tfgi.secretario}" /></td>
 				<td><c:out value= "${tfgi.estado}" /></td>
 		</c:otherwise>
 	</c:choose>
 	<td><c:if test= "${tfgi.memoria != null}">
-	<form action= "/mostrarmemoria" method="get">
-		<input id= "autor" name="autor" type="hidden” value= "${tfgi.autor}" />
-		<input type="submit” value= "Mostrar memoria" />
+	<form action= "/upload" method="get">
+		<input id= "autor" name="autor" type="hidden" value= "${tfgi.autor}" />
+		<input type="submit" value= "Mostrar memoria" />
 	</form>
 	</c:if></td>
 	</tr>

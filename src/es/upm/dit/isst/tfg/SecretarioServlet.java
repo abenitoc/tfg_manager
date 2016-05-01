@@ -11,32 +11,28 @@ import es.upm.dit.isst.tfg.dao.TFGDAO;
 import es.upm.dit.isst.tfg.dao.TFGDAOImpl;
 import es.upm.dit.isst.tfg.model.TFG;
 
-public class TeacherServlet extends HttpServlet {
+public class SecretarioServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
-		
-			String autor = (String)req.getParameter("autor");
-			
-			TFGDAO tfgdao = TFGDAOImpl.getInstance();
-			TFG tfg = tfgdao.readTFG(autor);
-			tfg.setEstado(2);
-			tfgdao.updateTFG(tfg);
-			
-			
-			resp.sendRedirect("/isst_tfg_t4");
+	
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
+		String secretario = req.getParameter("secretario");
+		String autor = req.getParameter("autor");
+		TFGDAO tfgdao = TFGDAOImpl.getInstance();
+		TFG tfg = tfgdao.readTFG(autor);
 		
+		tfg.setSecretario(secretario);
+		tfgdao.updateTFG(tfg);
 		
-		
+		resp.sendRedirect("/isst_tfg_t4");
 	}
-
 }

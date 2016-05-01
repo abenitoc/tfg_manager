@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
 import es.upm.dit.isst.tfg.dao.TFGDAO;
@@ -30,25 +31,32 @@ public class MemoriaServlet extends HttpServlet {
 		TFG tfg2 = tfgdao.readTFG(autor);
 		
 		BlobKey blobKey = new BlobKey(tfg2.getMemoria());
+		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 		blobstoreService.serve(blobKey, resp);
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
+		
 		Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(req);
 		List<BlobKey> blobKeys = blobs.get("file");
-	if (blobKeys == null || blobKeys.isEmpty() || blobKeys.get(0) == null) {
-			resp.sendError(1200);
+		if (blobKeys == null || blobKeys.isEmpty()) {
+			resp.sendRedirect("isst_tfg_t4");
+		} else {
+			String autor = req.getRemoteUser();
+			TFGDAO tfgdao = TFGDAOImpl.getInstance();
+			TFG tfg2 = tfgdao.readTFG(autor);
+			tfg2.setMemoria(blobKeys.get(0).getKeyString());
+			tfg2.setEstado(3);
+			tfgdao.updateTFG(tfg2);
+			
+			resp.sendRedirect("/serve?blob-key=" + blobKeys.get(0).getKeyString());
 		}
 
-		String autor = req.getRemoteUser();
-		TFGDAO tfgdao = TFGDAOImpl.getInstance();
-		TFG tfg2 = tfgdao.readTFG(autor);
-		tfg2.setMemoria(blobKeys.get(0).getKeyString());
-		tfg2.setEstado(3);
-		tfgdao.updateTFG(tfg2);
+
 		
-		resp.sendRedirect("/isst_tfg_t4");
+		resp.sendRedirect("isst_tfg_t4");
+		
 		
 	}
 }
