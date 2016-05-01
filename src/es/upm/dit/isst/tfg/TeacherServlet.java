@@ -25,8 +25,8 @@ public class TeacherServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			 throws IOException, ServletException {
 		
-			String autor = (String)req.getAttribute("autor");
-		
+			String autor = (String)req.getParameter("autor");
+			
 			TFGDAO tfgdao = TFGDAOImpl.getInstance();
 			TFG tfg = tfgdao.readTFG(autor);
 			tfg.setSecretario("senor");

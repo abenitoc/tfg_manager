@@ -3,6 +3,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
+<%
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,6 +44,17 @@
 		<c:if test="${ tfg.estado == 1}">
 			<p>Sin memoria.</p>
 		</c:if>
+	<c:if test="${not empty user and not empty tfg and tfg.estado == 2}">
+			Formulario subida de memoria. <c:out value="${tfg.memoria}" />
+		<form action="<%=blobstoreService.createUploadUrl("/upload")%>"
+			method="post" enctype="multipart/form-data">
+			<input id="autor" name="autor" type="hidden" value="${tfg.autor}" />
+			<input type="file" name="file" />
+			<input type="submit" value="Subir memoria" />
+		</form>
+	</c:if>
+	
+
 	</c:if>
 	
 	<!-- Si eres profesor -->
