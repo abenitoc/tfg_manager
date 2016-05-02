@@ -46,6 +46,13 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<url-pattern>/aceptarSecretario</url-pattern>
 	</servlet-mapping>
 	
-	
+	<servlet>
+		<servlet-name>AceptarTutorEmail</servlet-name>
+		<servlet-class>es.upm.dit.isst.tfg.TFGServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AceptarTutorEmail</servlet-name>
+		<url-pattern>/_ah/mail/tfg@tfg_manager.appspotmail.com</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

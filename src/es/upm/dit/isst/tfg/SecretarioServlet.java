@@ -33,6 +33,7 @@ public class SecretarioServlet extends HttpServlet {
 		tfg.setSecretario(secretario);
 		tfgdao.updateTFG(tfg);
 		
+		
 		resp.sendRedirect("/isst_tfg_t4");
 	}
 }
